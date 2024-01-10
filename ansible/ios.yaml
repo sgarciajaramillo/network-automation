@@ -1,0 +1,21 @@
+- name: Cisco IOS Commands
+  hosts: ios
+  gather_facts: no
+  connection: network_cli
+  vars:
+    ansible_ssh_host: '{{ ip_address }}'
+    ansible_network_os: "{{ ansible_network_os_override | default('cisco.ios.ios') }}"
+    ansible_command_timeout: 120
+    output_path: "{{ playbook_dir }}/csv"
+    filename: "network_device_info_{{ date }}.csv"
+  tasks:
+    - name: Include vars
+      ansible.builtin.include_vars:
+        file: inventory/host_vars/show_ip_ospf_nei.json
+        name: show_ip_ospf_neighbor
+
+    - name: Debug Test Var
+      ansible.builtin.debug: 
+        # msg: "{{ show_ip_ospf_neighbor.stdout_lines | flatten | reject('match', 'Load') | reject('match', 'Time') | select() | regex_replace('(.*\\b)/\\s+-\\s+(\\d.*)', '\\1 \\2/', multiline=True) }}"
+        msg: "{{ show_ip_ospf_neighbor.stdout_lines | flatten | reject('match', 'Load') | reject('match', 'Time') | select() | map('regex_replace',('^([a-z A-Z]+)(.*[a-z A-Z])/\\s+-\\s+(\\d.*)$','\\1 \\2 \\3')) }}"
+      run_once: True

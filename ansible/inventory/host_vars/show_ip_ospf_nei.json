@@ -1,0 +1,29 @@
+{
+    "changed": false,
+    "stdout": [
+      "Load for five secs: 3%/0%; one minute: 3%; five minutes: 5%\nTime source is NTP, 16:54:33.473 EST Fri Dec 15 2023\n\n\nNeighbor ID     Pri   State           Dead Time   Address         Interface\n10.10.1.18       0   FULL/  -        00:00:36    10.10.92.9   Port-channel3\n10.10.1.43      0   FULL/  -        00:00:34    10.10.65.8  TenGigabitEthernet1/18"
+    ],
+    "stdout_lines": [
+      [
+        "Load for five secs: 3%/0%; one minute: 3%; five minutes: 5%",
+        "Time source is NTP, 16:54:33.473 EST Fri Dec 15 2023",
+        "",
+        "",
+        "Neighbor ID     Pri   State           Dead Time   Address         Interface",
+        "10.10.1.18       0   FULL/  -        00:00:36    10.10.92.9   Port-channel3",
+        "10.10.1.43      0   FULL/  -        00:00:34    10.10.65.8  TenGigabitEthernet1/18"
+      ]
+    ],
+    "invocation": {
+      "module_args": {
+        "commands": [
+          "show ip ospf neighbor"
+        ],
+        "match": "all",
+        "retries": 9,
+        "interval": 1,
+        "wait_for": null
+      }
+    },
+    "_ansible_no_log": null
+}
