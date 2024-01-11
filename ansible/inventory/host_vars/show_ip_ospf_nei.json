@@ -11,7 +11,10 @@
         "",
         "Neighbor ID     Pri   State           Dead Time   Address         Interface",
         "10.10.1.18       0   FULL/  -        00:00:36    10.10.92.9   Port-channel3",
-        "10.10.1.43      0   FULL/  -        00:00:34    10.10.65.8  TenGigabitEthernet1/18"
+        "10.10.1.43      0   FULL/  -        00:00:34    10.10.65.8  TenGigabitEthernet1/18",
+        "192.168.45.1    1      FULL/DR  -    00:00:36     10.0.0.1    Ethernet0",
+        "12.172.45.1    1      FULL/DROTHER  -    00:00:36     10.10.10.10    Ethernet0"
+        
       ]
     ],
     "invocation": {
