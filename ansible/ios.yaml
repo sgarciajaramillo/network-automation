@@ -16,5 +16,5 @@
 
     - name: Debug Test Var
       ansible.builtin.debug: 
-        msg: "{{ show_ip_ospf_neighbor.stdout_lines | flatten | reject('match', 'Load') | reject('match', 'Time') | select() | list | map('regex_replace', '^(.*\\w+/\\w*?)\\s+-\\s+(.*)$', '\\1 \\2') | map('regex_replace', '(/\\s+|\\s+)', ',') | list }}"
+        msg: "{{ show_ip_ospf_neighbor.stdout_lines | flatten | reject('match', 'Load') | reject('match', 'Time') | select() | list | map('regex_replace', '^(.*\\w+/\\w*?)\\s+-\\s+(.*)$', '\\1 \\2') | map('regex_replace', '(/\\s+|\\s\\s+)', ',') | list }}"
       run_once: True
